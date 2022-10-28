@@ -12,7 +12,8 @@ const App = () => {
   return (
     <>
       <h1 style={styles}>こんにちは！！！</h1>
-      <ColoredMessage color="green" message="お元気ですか？？" />
+      <ColoredMessage color="green">お元気ですか？？</ColoredMessage>
+      <ColoredMessage color="blue">ありがとう、元気です！</ColoredMessage>
       <button onClick={onClick}>ボタン</button>
     </>
   );

@@ -1,13 +1,16 @@
 import React from "react";
 
 // NOTE: propsを引数で受け取る
-const ColoredMessage = (props) => {
+const ColoredMessage = ({ color, children }) => {
+  // const { color, children } = props;
+
   const styles = {
-    color: props.color, // オブジェクトなので、文字列で指定する
+    color, // オブジェクトなので、文字列で指定する
     fontSize: "18px" // キャメルケースで書く
   };
 
-  return <p style={styles}>{props.message}</p>;
+  // NOTE: props.childrenで、コンポーネントで囲った中身を取得できる
+  return <p style={styles}>{children}</p>;
 };
 
 export default ColoredMessage;
