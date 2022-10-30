@@ -1,0 +1,58 @@
+body {
+  font-family: sans-serif;
+}
+
+input {
+  border-radius: 12px;
+  border: none;
+  padding: 6px 16px;
+  outline: none;
+}
+
+button {
+  border-radius: 5px;
+  padding: 2px 10px;
+  margin: 0px 5px;
+  border: none;
+}
+
+button:hover {
+  background-color: gray;
+  color: white;
+}
+
+.task-name {
+  margin-right: 10px;
+}
+
+.title {
+  text-align: center;
+  margin-top: 0px;
+}
+
+.area {
+  width: 400px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.input-area {
+  background-color: #c1ffff;
+  height: 30px;
+}
+
+.incompleted-area {
+  background-color: #c6ffe2;
+  min-height: 200px;
+}
+
+.completed-area {
+  background-color: #ffffe0;
+  min-height: 200px;
+}
+
+.list-row {
+  display: flex;
+  margin-bottom: 4px;
+}
