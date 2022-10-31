@@ -2,14 +2,30 @@ import React, { useState } from "react";
 import "./styles.css";
 
 export const App = () => {
+  const [todoText, setTodoText] = useState("");
   const [incompletedTodo, setIncompletedTodo] = useState(["aaaa", "bbb"]);
   const [completedTodo, setCompletedTodo] = useState(["ccc", "ddd"]);
 
+  const updateTodoText = (e) => setTodoText(e.target.value);
+  const addTodo = () => {
+    if (todoText === "") return;
+    const newTodos = [...incompletedTodo, todoText];
+    setIncompletedTodo(newTodos);
+    setTodoText("");
+  };
   return (
     <>
       <div className="area input-area">
-        <input placeholder="TODOを入力" id="input" />
-        <button id="add">追加</button>
+        {/* setTodoTextした時に連動させたいからvalueプロパティも必要 */}
+        <input
+          placeholder="TODOを入力"
+          id="input"
+          value={todoText}
+          onChange={updateTodoText}
+        />
+        <button id="add" onClick={addTodo}>
+          追加
+        </button>
       </div>
 
       <div className="area incompleted-area">
