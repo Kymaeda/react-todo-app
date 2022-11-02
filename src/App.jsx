@@ -28,6 +28,15 @@ export const App = () => {
     setIncompletedTodo(newIncompletedTodos);
     setCompletedTodo(newCompletedTodos);
   };
+  const returnTodo = (index) => {
+    console.log(index);
+    const newCompletedTodos = [...completedTodo];
+    newCompletedTodos.splice(index, 1);
+
+    const newIncompletedTodos = [...incompletedTodo, completedTodo[index]];
+    setIncompletedTodo(newIncompletedTodos);
+    setCompletedTodo(newCompletedTodos);
+  };
   return (
     <>
       <div className="area input-area">
@@ -67,12 +76,12 @@ export const App = () => {
       <div className="area completed-area">
         <p className="title">完了のTODO</p>
         <ul id="completed-list">
-          {completedTodo.map((todo) => {
+          {completedTodo.map((todo, index) => {
             return (
               <li key={todo}>
                 <div className="list-row">
                   <p>{todo}</p>
-                  <button>戻す</button>
+                  <button onClick={() => returnTodo(index)}>戻す</button>
                 </div>
               </li>
             );
