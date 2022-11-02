@@ -19,6 +19,15 @@ export const App = () => {
     newTodos.splice(index, 1);
     setIncompletedTodo(newTodos);
   };
+  const completeTodo = (index) => {
+    const newIncompletedTodos = [...incompletedTodo];
+    newIncompletedTodos.splice(index, 1);
+
+    const newCompletedTodos = [...completedTodo, incompletedTodo[index]];
+
+    setIncompletedTodo(newIncompletedTodos);
+    setCompletedTodo(newCompletedTodos);
+  };
   return (
     <>
       <div className="area input-area">
@@ -43,7 +52,7 @@ export const App = () => {
               <li key={todo}>
                 <div className="list-row">
                   <p>{todo}</p>
-                  <button>完了</button>
+                  <button onClick={() => completeTodo(index)}>完了</button>
                   {/*
                     関数に引数を渡したい場合はarrow関数で新たに呼び出す
                     {removeTodo(index)}だと、ページ描画時に実行されてしまう
