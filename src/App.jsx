@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
+import { InputTodo } from "./components/InputTodo";
 
 export const App = () => {
   const [todoText, setTodoText] = useState("");
@@ -39,18 +40,11 @@ export const App = () => {
   };
   return (
     <>
-      <div className="area input-area">
-        {/* setTodoTextした時に連動させたいからvalueプロパティも必要 */}
-        <input
-          placeholder="TODOを入力"
-          id="input"
-          value={todoText}
-          onChange={updateTodoText}
-        />
-        <button id="add" onClick={addTodo}>
-          追加
-        </button>
-      </div>
+      <InputTodo
+        todoText={todoText}
+        onChange={updateTodoText}
+        onClick={addTodo}
+      />
 
       <div className="area incompleted-area">
         <p className="title">未完了のTODO</p>
