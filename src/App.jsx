@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { InputTodo } from "./components/InputTodo";
+import { IncompletedTodos } from "./components/IncompletedTodos";
 
 export const App = () => {
   const [todoText, setTodoText] = useState("");
@@ -46,27 +47,12 @@ export const App = () => {
         onClick={addTodo}
       />
 
-      <div className="area incompleted-area">
-        <p className="title">未完了のTODO</p>
-        <ul id="incompletion-list">
-          {incompletedTodo.map((todo, index) => {
-            return (
-              // NOTE: loop処理の際はkeyを設定する(部分レンダリングのため)
-              <li key={todo}>
-                <div className="list-row">
-                  <p>{todo}</p>
-                  <button onClick={() => completeTodo(index)}>完了</button>
-                  {/*
-                    関数に引数を渡したい場合はarrow関数で新たに呼び出す
-                    {removeTodo(index)}だと、ページ描画時に実行されてしまう
-                  */}
-                  <button onClick={() => removeTodo(index)}>削除</button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <IncompletedTodos
+        records={incompletedTodo}
+        completeTodo={completeTodo}
+        removeTodo={removeTodo}
+      />
+
       <div className="area completed-area">
         <p className="title">完了のTODO</p>
         <ul id="completed-list">
