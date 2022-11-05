@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import { InputTodo } from "./components/InputTodo";
 import { IncompletedTodos } from "./components/IncompletedTodos";
+import { CompletedTodos } from "./components/CompletedTodos";
 
 export const App = () => {
   const [todoText, setTodoText] = useState("");
@@ -53,21 +54,7 @@ export const App = () => {
         removeTodo={removeTodo}
       />
 
-      <div className="area completed-area">
-        <p className="title">完了のTODO</p>
-        <ul id="completed-list">
-          {completedTodo.map((todo, index) => {
-            return (
-              <li key={todo}>
-                <div className="list-row">
-                  <p>{todo}</p>
-                  <button onClick={() => returnTodo(index)}>戻す</button>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <CompletedTodos records={completedTodo} onClick={returnTodo} />
     </>
   );
 };
