@@ -10,7 +10,7 @@ const style = {
 };
 
 export const InputTodo = (props) => {
-  const { todoText, onChange, onClick } = props;
+  const { todoText, onChange, onClick, disabled } = props;
   return (
     <div style={style}>
       {/* setTodoTextした時に連動させたいからvalueプロパティも必要 */}
@@ -19,8 +19,9 @@ export const InputTodo = (props) => {
         id="input"
         value={todoText}
         onChange={onChange}
+        disabled={disabled}
       />
-      <button id="add" onClick={onClick}>
+      <button id="add" onClick={onClick} disabled={disabled}>
         追加
       </button>
     </div>

@@ -31,6 +31,10 @@ export const App = () => {
     setIncompletedTodo(newIncompletedTodos);
     setCompletedTodo(newCompletedTodos);
   };
+  const disabledAddTodo = () => {
+    console.log(incompletedTodo.length >= 5);
+    return incompletedTodo.length >= 5;
+  };
   const returnTodo = (index) => {
     console.log(index);
     const newCompletedTodos = [...completedTodo];
@@ -46,7 +50,12 @@ export const App = () => {
         todoText={todoText}
         onChange={updateTodoText}
         onClick={addTodo}
+        disabled={disabledAddTodo()}
       />
+
+      {disabledAddTodo() && (
+        <p style={{ color: "red" }}>登録できるTODOは5つまでです。</p>
+      )}
 
       <IncompletedTodos
         records={incompletedTodo}
